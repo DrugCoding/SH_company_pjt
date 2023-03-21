@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div class="container mt-5">
+        <h1 class="text-center">공사실적</h1>
+        <div class="text-end mb-3">
+          <a href="{% url 'performances:create' %}"><button type="button" class="btn btn-outline-dark">글 작성</button></a>
+        </div>
+        <table class="table table-hover">
+          <thead>
+            <tr class="table-dark text-center">
+              <th scope="col">공사명</th>
+              <th scope="col">발주처</th>
+              <th scope="col">공사기간</th>
+              <th scope="col">미정</th>
+            </tr>
+          </thead>
+        </div>
+    </div>
+</body>
+</html>                                                                                     
