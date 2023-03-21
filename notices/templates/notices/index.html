@@ -8,5 +8,35 @@
 </head>
 <body>
     <h1>공지사항입니다</h1>
+    <form action="{% url 'notices:search' %}" method="">
+        {% csrf_token %}
+        <input class="form-control search-input" name="keyword" type="search" placeholder="검색어를 입력해주세요."
+            aria-label="Search" style="width: 340px; height: 47px; border: 0px; font-weight: 400;">
+        <button type="search" class="btn">검색</button>
+    </form>
+    <div class = "col-12">
+        <table class = "table table-light">
+            <thead class = "thead-light">
+                <tr>
+                    <th>번호</th>
+                    <th>제목</th>
+                    <th>작성자</th>
+                    <th>작성시간</th>
+                    <th>조회수</th>
+                </tr>
+            </thead>
+            <tbody class = "text-dark">
+                {% for notice in notices %}
+                <tr onclick = "location.href = '/notices/{{notice.id}}'">
+                    <th>{{ notice.id }}</th>
+                    <th>{{ notice.title }}</th>
+                    <th>{{ notice.user }}</th>
+                    <th>{{ notice.created_at }}</th>
+                    <th>{{ notice.hits }}</th>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
 </body>
 </html>

@@ -7,6 +7,18 @@
     <title>Document</title>
 </head>
 <body>
-    
+    <form action="" method="POST">
+        {% csrf_token %}
+        <div class="d-flex justify-content-end">
+          <input class="btn" type="submit" value="작성완료">
+        </div>
+        <h2>
+            <input class="input-title form-control mb-3" style="border:0px; font-size: 1.5rem;" name="title"
+            placeholder="제목을 입력해주세요." value="{{ notice.title }}"  maxlength="50" required>
+        </h2>
+        <textarea class="form-control" name="content" required>{{ notice.content }}</textarea>
+        <br>
+        <input type="file" name="image" accept="image/*" class="form-control" id="id_image">
+    </form>
 </body>
 </html>
