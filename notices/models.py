@@ -8,7 +8,7 @@ from django.conf import settings
 class Notice(models.Model):
     title = models.CharField(max_length=50)
     content = models.TextField()
-    image = models.ProcessedImageField(blank=True,
+    image = ProcessedImageField(blank=True,
         processors=[Thumbnail(1920, 1080)],  
         format="JPEG", 
         options={"quality": 100},)
