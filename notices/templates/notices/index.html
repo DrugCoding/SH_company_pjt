@@ -31,7 +31,7 @@
                     <th>{{ notice.id }}</th>
                     <th>{{ notice.title }}</th>
                     <th>{{ notice.user }}</th>
-                    <th>{{ notice.created_at }}</th>
+                    <th>{{ notice.created_at | date:'Y.m.d H:i'}}</th>
                     <th>{{ notice.hits }}</th>
                 </tr>
                 {% endfor %}

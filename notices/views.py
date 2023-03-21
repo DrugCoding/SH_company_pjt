@@ -2,6 +2,7 @@ from django.shortcuts import render, redirect
 from .forms import NoticeForm
 from .models import Notice
 from django.contrib import messages
+from django.db.models import Q
 
 # Create your views here.
 def index(request):
@@ -57,10 +58,14 @@ def search(request):
     keyword = request.GET.get("keyword", "")  # 검색어
 
     if keyword:
-        notices = Notice.objects.filter(title__icontains=keyword).values()
+        notices = Notice.objects.filter(
+            Q(title__icontains=keyword) | Q(content__icontains=keyword) # Q는 장고 model orm으로 where 절에 or문을 추가하고 싶을 때 사용
+        ).distinct()
         
         context = {
             "notices": notices,
             "keyword": keyword,
         }
         return render(request, "notices/search.html", context)
+    else:
+        return redirect("notices:index")
