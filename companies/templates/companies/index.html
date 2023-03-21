@@ -1,29 +1,55 @@
+{%load static%}
 <!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>회사 홈페이지 수정 작업중</title>
-   <!-- get_bootstrap -->
+  <title>SH 건설산업(주)</title>
+   
+  <!-- get_bootstrap -->
    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">
-</head>
-<body>
+   
+   <!-- fonts_google -->
+   <link rel="preconnect" href="https://fonts.googleapis.com">
+   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+   <link href="https://fonts.googleapis.com/css2?family=Archivo+Black&family=Noto+Sans+KR:wght@100&display=swap" rel="stylesheet"> 
+  </head>
+<body style="background-color: #14402B; font-family: 'Noto Sans KR', sans-serif;">
+
+  <!-- font-family: 'Archivo Black', sans-serif;  font-family: 'Noto Sans KR', sans-serif; -->
 
   <!-- NAVBAR  -->
-  <nav style="height: 120px;" class="d-flex justify-content-center navbar navbar-expand-lg bg-body-tertiary">
+  <nav style="height: 120px; background-color: #fff;" 
+       class="d-flex justify-content-center navbar navbar-expand-lg ">
     <div class="d-flex justify-content-center">
-      <a class="navbar-brand" href="#">
-        LOGO
-      </a>
-      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-        <span class="navbar-toggler-icon"></span>
-      </button>
-      <div kkclass="collapse navbar-collapse" id="navbarNav">
+
+      <!-- LOGO IMG -->
+      <div>
+        <a class="" href="#">
+          <img 
+              src="{%static 'images/SH건설산업(주)_LOGO.PNG'%}" alt="SH건설산업(주) 로고 사진입니다."
+              style="width: 300px; margin-right: 50px; position: relative;"
+          >
+            <h1 style="position: absolute; z-index: 1; margin-top: 100px; color: #fff; font-size: 68px; right: 700px;">
+              끊임없는 기술혁신을 통하여 <br> 최상의 시공품질을 유지합니다.
+            </h1>
+            <h3 style="position: absolute; z-index: 1; margin-top: 288px; color: #fff; font-size: 23px; right: 973px;">
+              에스에이치건설산업 주식회사는 L형 측구, 배수공, 터널공동구, <br>
+              중앙분리대, 철도터널동구, 도로경계석, 교량난간 방호벽 등 <br>
+              콘크리트기계화 시공 전문업체입니다.
+            </h3>
+            
+          
+        </a>
+      </div>
+
+      <!-- navbar 마크업 직접 해보도록 노력하기 -->
+      <div kkclass="collapse navbar-collapse" id="navbarNav" 
+           style="margin-top: 25px; font-size: 20px; font-weight: 400;">
         <ul class="navbar-nav">
-          <li  class="nav-item">
-            <a  class="nav-link active" aria-current="page" href="#">회사소개</a>
-            <a  class="nav-link active" aria-current="page" href="#">회사소개</a>
+          <li class="nav-item">
+            <a class="nav-link active" aria-current="page" href="#">회사소개</a>
           </li>
           <li class="nav-item">
             <a class="nav-link active" aria-current="page" href="#">시공분야</a>
@@ -41,6 +67,30 @@
       </div>
     </div>
   </nav>
+
+
+  <!-- BANNER -->
+  <div class="banner">
+    <div class="background">
+      <!-- BANNER IMG -->
+      <img src="{%static 'images/60.png' %}"
+            style="position: relative; width: 1700px; height: 550px; 
+                   background-repeat: no-repeat; background-size: cover;
+                   filter: brightness(50%);" 
+            alt="banner background"
+      >
+    </div>
+  </div>
+
+  <!-- NOTICE /  -->
+  <div class="notice"
+       style="position: absolute; width: 839px; height: 62px; background-color: #fff;">
+       <div style="margin-top: 15px; font-weight: 400; font-size: 20px; margin-left: 280px;" 
+            class="d-flex justify-content-around">
+        <p>SH 건설산업 공지사항입니다.</p>
+       </div>
+       
+  </div>
   
 
 
