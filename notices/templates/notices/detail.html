@@ -7,6 +7,30 @@
     <title>Document</title>
 </head>
 <body>
-    
+    <table class = "table table-light">
+            <thead class = "thead-light">
+                <tr>
+                    <th>제목</th>
+                    <th>작성자</th>
+                    <th>작성시간</th>
+                    <th>조회수</th>
+                </tr>
+            </thead>
+            <tbody class = "text-dark">
+                    <th>{{ notice.title }}</th>
+                    <th>{{ notice.user }}</th>
+                    <th>{{ notice.created_at }}</th>
+                    <th>{{ notice.hits }}</th>
+                </tr>
+            </tbody>
+    </table>
+    <p>{{ notice.content }}</p>
+    <div class='mt-2 d-flex'>
+        <p>
+          <button type="button" class="btn" >
+            <a href="{% url 'notices:update' notice.pk %}" style='text-decoration:none;' class='fw-bolder'>수정하기</a>
+          </button>
+        </p>
+    </div>
 </body>
 </html>
