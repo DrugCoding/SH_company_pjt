@@ -3,6 +3,7 @@ from .forms import NoticeForm
 from .models import Notice
 from django.contrib import messages
 from django.db.models import Q
+from django.contrib.auth.decorators import login_required
 
 # Create your views here.
 def index(request):
@@ -12,6 +13,7 @@ def index(request):
     }
     return render(request, 'notices/index.html', context)
 
+@login_required
 def create(request):
     if request.method == "POST":
         notice_form = NoticeForm(request.POST, request.FILES) # 이미지는 request.FILES로 받는다.
