@@ -4,9 +4,9 @@ from .models import Performance
 
 # Create your views here.
 def index(request):
-    p_article = Performance.objects.order_by('-pk')
+    p_articles = Performance.objects.order_by('-pk')
     context = {
-        'p_article': p_article,
+        'p_articles': p_articles,
     }
     return render(request, 'performances/index.html', context)
 
@@ -15,7 +15,7 @@ def create(request):
         p_form = PerformanceForm(request.POST)
         if p_form.is_valid():
             p_article = p_form.save(commit=False)
-            # p_article.user = request.user
+            p_article.user = request.user
             p_article.save()
             return redirect('performances:index')
     else:
