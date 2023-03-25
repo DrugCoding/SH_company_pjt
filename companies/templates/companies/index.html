@@ -5,9 +5,32 @@
 
 {% endblock css %}
 
-{% block body %}
+{% block content %}
+
+<!-- Banner -->
+<div style="margin-top: 100px;" class="card text-bg-dark">
+    <img style="height: 458px; filter: brightness(50%); background-size: cover;" src="{%static 'images/60.png'%}" class="card-img" alt="...">
+    <div class="card-img-overlay">
+        <div style="margin-top: 60px; margin-left: 90px;">
+            <p style="font-size: 54px;" class="card-title">
+                끊임없는 기술혁신을 통하여 <br>
+                최상의 시공품질을 유지합니다.
+            </p>
+        </div>
+      <div style="margin-top: 20px; margin-left: 90px;">
+        <p style="font-size: 19px;" class="card-text">
+            에스에이치건설산업 주식회사는 L형 측구, 배수공, 터널공동구, <br>
+            중앙분리대, 철도터널동구, 도로경계석, 교량난간 방호벽 등 <br>
+            콘크리트기계화 시공 전문업체입니다.
+          </p>
+      </div>
+      <div style="margin-top: 20px; margin-left: 90px;">
+        <p  class="card-text">
+        <button type="button" class="btn btn-outline-success">문의하기</button>
+      </p>
+    </div>
+  </div>
 
 
 
-
-{% endblock body %}
+{% endblock %}
