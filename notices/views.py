@@ -1,6 +1,6 @@
 from django.shortcuts import render, redirect
 from .forms import NoticeForm
-from .models import Notice
+from .models import Notice, Photo
 from django.contrib import messages
 from django.db.models import Q
 from django.contrib.auth.decorators import login_required
@@ -21,9 +21,17 @@ def create(request):
             notice_form = NoticeForm(request.POST, request.FILES) # 이미지는 request.FILES로 받는다.
             if notice_form.is_valid():
                 notice = notice_form.save(commit=False) #  form이 작동하고 나서 save가 작동하도록 한다.
-                # notice.user = request.user
+                notice.user = request.user
                 notice.save()
-                messages.success(request, '공지 글 작성이 완료되었습니다.')
+                for img in request.FILES.getlist('imgs'):
+                    # Photo 객체를 하나 생성한다.
+                    photo = Photo()
+                    # 외래키로 현재 생성한 Post의 기본키를 참조한다.
+                    photo.notice = notice
+                    # imgs로부터 가져온 이미지 파일 하나를 저장한다.
+                    photo.image = img
+                    # 데이터베이스에 저장
+                    photo.save()
                 return redirect('notices:index')
         else:
             notice_form = NoticeForm()
@@ -63,11 +71,22 @@ def detail(request, notice_pk):
 @login_required
 def update(request, notice_pk):
     notice = Notice.objects.get(pk=notice_pk)
+    # image = notice.photo_set.all()
     if request.user.is_superuser: # 관리자만 수정 가능
         if request.method == 'POST':
             notice_form = NoticeForm(request.POST, request.FILES, instance=notice)
             if notice_form.is_valid():
                 notice_form.save()
+                for img in request.FILES.getlist('imgs'):
+                    # Photo 객체를 하나 생성한다.
+                    photo = Photo()
+                    # 외래키로 현재 생성한 Post의 기본키를 참조한다.
+                    photo.notice = notice
+                    # imgs로부터 가져온 이미지 파일 하나를 저장한다.
+                    photo.image = img
+                    # 데이터베이스에 저장
+                    photo.save()
+                    
                 return redirect("notices:detail", notice_pk)
         else:
             # GET : Form을 제공
