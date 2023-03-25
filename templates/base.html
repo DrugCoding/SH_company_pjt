@@ -1,22 +1,37 @@
-{%load static%}
+{% load django_bootstrap5 %}
+{% load static %}
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <!-- get_bootstrap -->
-  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">
-  <title>회사 홈페이지 수정 작업중</title>
 
+  <!-- 홈페이지 TITLE 입니다 -->
+  <title>{% block title %}SH 건설산업(주){% endblock title %}</title>
+
+      <!-- 오픈그래프 카드  -->
+      <meta property="og:type" content="website" />
+      <meta property="og:site_name" content="SH 건설산업" />
+      <meta property="og:title" content="SH 건설산업 KOREA" />
+      <meta property="og:description" content="SH 건설산업(주) 회사 홈페이지 입니다." />
+      <meta property="og:image" content="{% static 'images/SH건설산업(주)_LOGO.PNG' %}" />
+      <meta property="og:url" content="#" />
+      <!-- 트위터 카드 -->
+      <meta property="twitter:card" content="summary" />
+      <meta property="twitter:site" content="SH 건설산업" />
+      <meta property="twitter:title" content="SH 건설산업 KOREA" />
+      <meta property="twitter:description" content="SH 건설산업(주) 회사 홈페이지 입니다." />
+      <meta property="twitter:image" content="{% static 'images/SH건설산업(주)_LOGO.PNG' %}" />
+      <meta property="twitter:url" content="#" />
 </head>
-
 <body>
   
-  
-
-
-  <!-- get_bootstrap -->
-  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js" integrity="sha384-w76AqPfDkMBDXo30jS1Sgez6pr3x5MlQ1ZAGC+nuZB+EYdgRZgiwxhTBTkF7CXvN" crossorigin="anonymous"></script>
 </body>
 </html>
+
+
+{% block body %}
+
+{% endblock body %}
