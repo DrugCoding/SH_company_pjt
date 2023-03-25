@@ -21,11 +21,13 @@
                     <th>{{ notice.user }}</th>
                     <th>{{ notice.created_at | date:'Y.m.d H:i' }}</th>
                     <th>{{ notice.hits }}</th>
-                    
                 </tr>
             </tbody>
     </table>
     <p>{{ notice.content }}</p>
+    {% for photo in notice.photo_set.all%}
+        <img src="{{photo.image.url}}" width="300"><br>
+    {% endfor %}
     <div class='mt-2 d-flex'>
         <p>
           <button type="button" class="btn" >
