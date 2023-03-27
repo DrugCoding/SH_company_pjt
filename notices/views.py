@@ -98,7 +98,14 @@ def update(request, notice_pk):
         return render(request, 'notices/form.html', context)
     else:
         return redirect("notices:detail", notice_pk)
-           
+
+@login_required
+def delete(request, notice_pk):
+    if request.user.is_authenticated and request.user == notice.user:
+        notice = Notice.objects.get(pk=notice_pk)
+        notice.delete()
+        return redirect("notices:index")
+    
 
 # 검색 기능 - 요청 url 에 keyword 정보가 있는지 확인하고, 해당 키워드를 가지고 title 필드를 검색해서 키워드가 포함된 객체만 notices 에 담겨진다.
 def search(request):

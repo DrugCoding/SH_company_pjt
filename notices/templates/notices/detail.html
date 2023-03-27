@@ -28,12 +28,17 @@
     {% for photo in notice.photo_set.all%}
         <img src="{{photo.image.url}}" width="300"><br>
     {% endfor %}
-    <div class='mt-2 d-flex'>
-        <p>
-          <button type="button" class="btn" >
-            <a href="{% url 'notices:update' notice.pk %}" style='text-decoration:none;' class='fw-bolder'>수정하기</a>
-          </button>
-        </p>
-    </div>
+    {% if request.user.is_superuser == 1 %}
+        <div class='mt-2 d-flex'>
+            <p>
+            <button type="button" class="btn" >
+                <a href="{% url 'notices:update' notice.pk %}" style='text-decoration:none;' class='fw-bolder'>수정하기</a>
+            </button>
+            <button type="button" class="btn" >
+                <a href="{% url 'notices:delete' notice.pk %}" style='text-decoration:none;' class='fw-bolder'>삭제하기</a>
+            </button>
+            </p>
+        </div>
+    {% endif %}
 </body>
 </html>
