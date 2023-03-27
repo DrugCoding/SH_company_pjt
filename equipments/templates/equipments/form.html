@@ -1,4 +1,5 @@
 {% extends "base.html" %}
+{% load django_bootstrap5 %}
 {% load static %}
 
 {% block content %}
@@ -9,9 +10,12 @@
             <input class="input-title form-control mb-3" style="border:0px; font-size: 1.5rem;" name="title"
             placeholder="장비 이름을 입력해주세요." value="{{ equipment.title }}"  maxlength="50" required>
         </h2>
-        <textarea class="form-control" name="content" required>{{ equipment.content }}</textarea>
+        <textarea class="form-control mb-3" name="content" required>{{ equipment.content }}</textarea>
+        <div>
+            <input type="file" name="imgs">
+        </div>
         <div class="d-flex justify-content-end">
-          <input class="btn" type="submit" value="작성완료">
+          <input class="btn" type="submit" value="작성완료" style="background-color:#14402B; color:white; font-weight:bold">
         </div>
     </form>
 </div>
