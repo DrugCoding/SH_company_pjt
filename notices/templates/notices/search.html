@@ -1,39 +1,35 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-</head>
-<body>
+{% extends "base.html" %}
+{% load static %}
+
+{% block content %}
+<div class="container" style="padding:10rem">
     {% if not notices %}
-        <div class="d-flex justify-content-center">
-        <h4>검색 결과가 없습니다</h4>
-        </div>
+            <div class="d-flex justify-content-center">
+            <h4>검색 결과가 없습니다</h4>
+            </div>
     {% else %}
-        <div class = "col-12">
-            <table class = "table table-light">
-                <thead class = "thead-light">
-                    <tr>
-                        <th>번호</th>
-                        <th>제목</th>
-                        <th>작성자</th>
-                        <th>작성시간</th>
-                    </tr>
-                </thead>
-                <tbody class = "text-dark">
-                    {% for notice in notices %}
-                    <tr onclick = "location.href = '/detail/{{notice.id}}'">
-                        <th>{{notice.id}}</th>
-                        <th>{{notice.title}}</th>
-                        <th>{{notice.userr}}</th>
-                        <th>{{notice.created_at}}</th>
-                    </tr>
-                    {% endfor %}
-                </tbody>
-            </table>
-        </div>
+            <div class = "col-12">
+                <table class = "table table-light">
+                    <thead class = "thead-light">
+                        <tr>
+                            <th>번호</th>
+                            <th>제목</th>
+                            <th>작성자</th>
+                            <th>작성시간</th>
+                        </tr>
+                    </thead>
+                    <tbody class = "text-dark">
+                        {% for notice in notices %}
+                        <tr onclick = "location.href = '/notices/{{notice.id}}'">
+                            <th>{{notice.id}}</th>
+                            <th>{{notice.title}}</th>
+                            <th>{{notice.user}}</th>
+                            <th>{{notice.created_at}}</th>
+                        </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+            </div>
     {% endif %}
-</body>
-</html>
+</div>
+{% endblock %}
