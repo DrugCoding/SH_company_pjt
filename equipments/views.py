@@ -26,3 +26,4 @@ def create(request):
     else:
         return redirect(request, 'equipments:index')
     
+

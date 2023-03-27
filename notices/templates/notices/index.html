@@ -1,13 +1,8 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-</head>
-<body>
-    <h1>공지사항입니다</h1>
+{% extends "base.html" %}
+{% load static %}
+
+{% block content %}
+<div class="container" style="padding:10rem">
     <form action="{% url 'notices:search' %}" method="">
         {% csrf_token %}
         <input class="form-control search-input" name="keyword" type="search" placeholder="검색어를 입력해주세요."
@@ -27,7 +22,7 @@
             </thead>
             <tbody class = "text-dark">
                 {% for notice in notices %}
-                <tr onclick = "location.href = '/notices/{{notice.id}}'">
+                <tr onclick = "location.href = '{{notice.id}}'">
                     <th>{{ notice.id }}</th>
                     <th>{{ notice.title }}</th>
                     <th>{{ notice.user }}</th>
@@ -38,5 +33,5 @@
             </tbody>
         </table>
     </div>
-</body>
-</html>
+</div>
+{% endblock %}
