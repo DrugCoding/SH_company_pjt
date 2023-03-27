@@ -5,9 +5,11 @@
 <div class="container" style="padding:10rem">
     <form action="{% url 'notices:search' %}" method="">
         {% csrf_token %}
-        <input class="form-control search-input" name="keyword" type="search" placeholder="검색어를 입력해주세요."
-            aria-label="Search" style="width: 340px; height: 47px; border: 0px; font-weight: 400;">
-        <button type="search" class="btn">검색</button>
+        <div class="d-flex justify-content-end mb-3">
+            <input class="form-control search-input mx-2" name="keyword" type="search" placeholder="검색어를 입력해주세요."
+                aria-label="Search" style="width: 21rem; height: 3rem; font-weight: 400; ">
+            <button type="search" class="btn fw-bold" style="background-color:#14402B; color:white">검색</button>
+        </div>
     </form>
     <div class = "col-12">
         <table class = "table table-light">
@@ -21,7 +23,7 @@
                 </tr>
             </thead>
             <tbody class = "text-dark">
-                {% for notice in notices %}
+                {% for notice in paginated_notices %}
                 <tr onclick = "location.href = '{{notice.id}}'">
                     <th>{{ notice.id }}</th>
                     <th>{{ notice.title }}</th>
@@ -33,5 +35,51 @@
             </tbody>
         </table>
     </div>
+    <!-- 게시글 페이지네이션 -->
+    {% if paginated_notices %}
+    <ul class="pagination justify-content-center py-5">
+    <!-- 첫 페이지 -->
+    {% if paginated_notices.has_previous %}
+    <!-- 이전페이지가 있으면 연결(첫 페이지가 아니면) -->
+    <li class="page-item">
+        <a class="page-link" style="color: #14402B; text-decoration: none;" tabindex="-1" href="?page=1">&#60;</a>
+    </li>
+    {% else %}
+    <li class="page-item disabled">
+        <a class="page-link" href="#">&#60;</a>
+    </li>
+    {% endif %}
+
+    <!-- 페이지리스트 -->
+    <!-- //페이지 범위를 하나씩 리턴 -->
+    {% for page_number in paginated_notices.paginator.page_range %}
+    {% if page_number >= paginated_notices.number|add:-2 and page_number <= paginated_notices.number|add:2 %} <!-- // 현재
+        페이지일 때는 active -->
+        {% if page_number == paginated_notices.number %}
+        <li class="page-item" aria-current="page">
+        <a class="page-link fw-bold" style="background-color: #14402B; color: white; text-decoration: none;"
+            href="?page={{ page_number }}">{{ page_number }}</a>
+        </li>
+        {% else %}
+        <li class="page-item text-color-warning">
+        <a class="page-link fw-bold" style="color: #14402B; text-decoration: none;" href="?page={{ page_number }}">
+            {{ page_number }}</a>
+        </li>
+        {% endif %}
+        {% endif %}
+        {% endfor %}
+
+        <!-- 다음페이지 -->
+        {% if paginated_notices.has_next %}
+        <li class="page-item">
+        <a class="page-link fw-bold" style="color: #14402B; text-decoration: none;" href="?page={{ max_index }}">&#62;</a>
+        </li>
+        {% else %}
+        <li class="page-item disabled">
+        <a class="page-link fw-bold" tabindex="-1" href="#">&#62;</a>
+        </li>
+        {% endif %}
+    </ul>
+    {% endif %}
 </div>
 {% endblock %}

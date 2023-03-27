@@ -5,12 +5,19 @@ from django.contrib import messages
 from django.db.models import Q
 from django.contrib.auth.decorators import login_required
 from datetime import datetime, timedelta
+from django.core.paginator import Paginator
 
 # Create your views here.
 def index(request):
     notices = Notice.objects.order_by('-pk')
+    page = request.GET.get('page', '1')
+    paginator = Paginator(notices, 5)
+    paginated_notices = paginator.get_page(page)
+    max_index = len(paginator.page_range)
     context = {
         'notices': notices,
+        "paginated_notices": paginated_notices,
+        "max_index": max_index,
     }
     return render(request, 'notices/index.html', context)
 
