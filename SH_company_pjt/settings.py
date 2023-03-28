@@ -23,6 +23,8 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # SECURITY WARNING: keep the secret key used in production secret!
 SECRET_KEY = 'django-insecure-pl@t+q2^$3nts^s^5vh&1o8p@(7x^*3$@ma*z&7!raqvt@2+a)'
 
+KAKAO_MAP_API_KEY = os.environ.get("KAKAO_MAP_API_KEY")
+
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
