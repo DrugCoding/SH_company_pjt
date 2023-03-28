@@ -6,6 +6,7 @@ from django.db.models import Q
 from django.contrib.auth.decorators import login_required
 from datetime import datetime, timedelta
 from django.core.paginator import Paginator
+from django.conf import settings
 
 # Create your views here.
 def index(request):
@@ -18,6 +19,7 @@ def index(request):
         'notices': notices,
         "paginated_notices": paginated_notices,
         "max_index": max_index,
+        "api_key": settings.KAKAO_MAP_API_KEY,
     }
     return render(request, 'notices/index.html', context)
 
