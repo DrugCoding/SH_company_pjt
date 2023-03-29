@@ -1,38 +1,40 @@
 {% extends "base.html" %}
 {% load static %}
 {% block content %}
-<div class = "col-12">
-  <table class = "table table-light">
-      <thead class = "thead-light">
-          <tr>
-              <th>공사명</th>
-              <th>발주처</th>
-              <th>공사기간</th>
-          </tr>
-      </thead>
-      <tbody class = "text-dark">
-          <tr>
-              <th>{{ p_article.title }}</th>
-              <th>{{ p_article.customer }}</th>
-              <th>{{ p_article.start }} ~ {{ p_article.finish }}</th>
-          </tr>
-      </tbody>
-    <div>
-        {{ p_article.title }} {{ p_article.customer }} {{ p_article.start }} ~ {{ p_article.finish }}
-    </div>
-  </table>
-  
-  {% if request.user.is_superuser == 1 %}
-        <div class='mt-2 d-flex justify-content-end'>
-            <p>
-            <button type="button" class="btn-warning" style="background-color:#14402B" >
-                <a href="{% url 'performances:update' p_article.pk %}" style='text-decoration:none; color:white' class='fw-bolder'>수정하기</a>
-            </button>
-            <button type="button" class="btn-warning">
-                <a href="{% url 'performances:delete' p_article.pk %}" style='text-decoration:none; color:#14402B' class='fw-bolder'>삭제하기</a>
-            </button>
-            </p>
+<div class="container" style="margin-top: 10rem;">
+    <div class = "col-12">
+    <table class = "table table-light">
+        <thead class = "thead-light">
+            <tr>
+                <th>공사명</th>
+                <th>발주처</th>
+                <th>공사기간</th>
+            </tr>
+        </thead>
+        <tbody class = "text-dark">
+            <tr>
+                <th>{{ p_article.title }}</th>
+                <th>{{ p_article.customer }}</th>
+                <th>{{ p_article.start }} ~ {{ p_article.finish }}</th>
+            </tr>
+        </tbody>
+        <div>
+            {{ p_article.title }} {{ p_article.customer }} {{ p_article.start }} ~ {{ p_article.finish }}
         </div>
-    {% endif %}
+    </table>
+    
+    {% if request.user.is_superuser == 1 %}
+            <div class='mt-2 d-flex justify-content-end'>
+                <p>
+                <button type="button" class="btn-warning" style="background-color:#14402B" >
+                    <a href="{% url 'performances:update' p_article.pk %}" style='text-decoration:none; color:white' class='fw-bolder'>수정하기</a>
+                </button>
+                <button type="button" class="btn-warning">
+                    <a href="{% url 'performances:delete' p_article.pk %}" style='text-decoration:none; color:#14402B' class='fw-bolder'>삭제하기</a>
+                </button>
+                </p>
+            </div>
+        {% endif %}
+    </div>
 </div>
 {% endblock %}
