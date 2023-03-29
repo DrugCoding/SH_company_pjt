@@ -7,7 +7,7 @@ from django.conf import settings
 class Equipment(models.Model):
     title = models.CharField(max_length=50)
     content = models.TextField()
-    image = ProcessedImageField(upload_to='images/', blank=True,
+    image = ProcessedImageField(upload_to='media/images/', blank=True,
                             processors=[ResizeToFill(1200, 960)],
                             format='JPEG',
                             options={'quality': 80})

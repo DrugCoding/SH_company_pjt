@@ -19,7 +19,6 @@ def index(request):
         'notices': notices,
         "paginated_notices": paginated_notices,
         "max_index": max_index,
-        "api_key": settings.KAKAO_MAP_API_KEY,
     }
     return render(request, 'notices/index.html', context)
 
