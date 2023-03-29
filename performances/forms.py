@@ -10,9 +10,9 @@ class PerformanceForm(forms.ModelForm):
             'start',
             'finish',
         ]
-        # labels = {
-        #     'title': '공사명',
-        #     'customer': '발주처',
-        #     'start': '공사시작',
-        #     'finish': '공사종료',
-        # }
+        labels = {
+            'title': '공사명',
+            'customer': '발주처',
+            'start': '공사시작',
+            'finish': '공사종료',
+        }

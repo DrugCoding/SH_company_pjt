@@ -4,7 +4,7 @@ from .models import Performance
 
 # Create your views here.
 def index(request):
-    p_articles = Performance.objects.order_by('-pk')
+    p_articles = Performance.objects.all()
     context = {
         'p_articles': p_articles,
     }
