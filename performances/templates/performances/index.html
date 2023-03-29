@@ -16,8 +16,7 @@
         </thead>
         <tbody class = "text-dark">
             {% for p_article in p_articles %}
-            <tr onclick = "location.href = '{{p_article.id}}'">
-                <th>{{ p_article.id }}</th>
+                <a href="{% url 'performances:detail' p_article.pk %}"><th>{{ p_article.id }}</th></a>
                 <th>{{ p_article.title }}</th>
                 <th>{{ p_article.customer }}</th>
                 <th>{{ p_article.start }} ~ {{ p_article.finish }}</th>
