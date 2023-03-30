@@ -13,6 +13,11 @@
                     <th>공사명</th>
                     <th>발주처</th>
                     <th>공사기간</th>
+                    <th>
+                        {% if request.user.is_superuser == 1 %}
+                        비고
+                        {% endif %}
+                    </th>
                 </tr>
             </thead>
             <tbody class = "text-dark">
@@ -22,6 +27,12 @@
                     <th>{{ p_article.title }}</th>
                     <th>{{ p_article.customer }}</th>
                     <th>{{ p_article.start }} ~ {{ p_article.finish }}</th>
+                    <th>
+                        {% if request.user.is_superuser == 1 %}
+                            <a href="{% url 'performances:update' p_article.pk %}" style='text-decoration:none; color:black' class='fw-bolder'>수정하기</a>
+                            <a href="{% url 'performances:delete' p_article.pk %}" style='text-decoration:none; color:black' class='fw-bolder'>삭제하기</a>
+                        {% endif %}
+                    </th>
                 </tr>
                 {% endfor %}
             </tbody>
