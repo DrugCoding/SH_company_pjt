@@ -1,4 +1,4 @@
-{% load django_bootstrap5 %}
+
 {% load static %}
 
 <!DOCTYPE html>
@@ -27,6 +27,17 @@
       <meta property="twitter:url" content="#" />
 
       <!-- CSS -->
+      
+      {% block style %}
+      <style>
+        .button {
+          background-color: aqua;
+          transition: 0.7;
+        }
+      </style>
+      {% endblock %}
+
+      <!-- CSS -->
       <link rel="stylesheet" type="text/css" href="{% static 'css/base.css' %}">
 
       <!--BOOTSTRAP -->
@@ -38,45 +49,51 @@
       <!-- GOOGLE ICON CDN -->
       <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Rounded:opsz,wght,FILL,GRAD@48,400,0,0" />
 
-      <!-- AOS -->
-      <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+      
 </head>
 
 
-<body style="background-color: #14402B;">
+<body style="overflow-x: hidden;">
   
   <!-- nav 생성 구간입니다. -->
-  <nav style="top:0px; background-color: #fff; height: 140px;" class="fixed-top navbar navbar-expand-lg bg-body-light">
+  <nav style="top:0px; background-color: #fff; height: 120px;" class="fixed-top navbar navbar-expand-lg bg-body-light">
     <div class="container-fluid">
       <a class="navbar-brand" href="#">
-        <img style="width: 350px; margin-left: 410px;" src="{%static 'images/SH건설산업(주)_LOGO.PNG'%}" alt="">
+        <img style="width: 350px; margin-left: 352px;" src="{%static 'images/SH건설산업(주)_LOGO.PNG'%}" alt="">
       </a>
-      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+      <button class="navbar-toggler" 
+              type="button" 
+              data-bs-toggle="collapse" 
+              data-bs-target="#navbarNav" 
+              aria-controls="navbarNav" 
+              aria-expanded="false" 
+              aria-label="Toggle navigation"
+      >
         <span class="navbar-toggler-icon"></span>
       </button>
-      <div  class="collapse navbar-collapse" id="navbarNav">
+      <div class="collapse navbar-collapse" id="navbarNav">
         <ul class="navbar-nav">
-          <li class="nav-item">
+          <li style="margin-right: 20px; text-decoration: none;" class="nav-item">
             <a style="font-size: 18px;" class="nav-link active" aria-current="page" href="#">
               회사소개
             </a>
           </li>
-          <li class="nav-item">
+          <li style="margin-right: 20px;" class="nav-item">
             <a style="font-size: 18px;" class="nav-link active" aria-current="page" href="#">
               시공분야
             </a>
           </li>
-          <li class="nav-item">
+          <li style="margin-right: 20px;" class="nav-item">
             <a style="font-size: 18px;" class="nav-link active" aria-current="page" href="#">
               시공실적
             </a>
           </li>
-          <li class="nav-item">
+          <li style="margin-right: 20px;" class="nav-item">
             <a style="font-size: 18px;" class="nav-link active" aria-current="page" href="#">
               장비운영
             </a>
           </li>
-          <li class="nav-item">
+          <li style="margin-right: 20px;" class="nav-item">
             <a style="font-size: 18px;" class="nav-link active" aria-current="page" href="#">
               커뮤니티
             </a>
@@ -88,80 +105,83 @@
 
   
   {% block content %}{% endblock content %}
-
+ 
 <!-- FOOTER 생성구간입니다.  -->
-   <footer style=" margin-top: 50px; margin-bottom: 50px;" id="footer" class="footer">
-    <div class="footer-content position-relative">
-      <div  class="container">
-        <div  class="row">
-
-          <div class="col-lg-4 col-md-6">
-            <div class="footer-info">
-              <h3>SH건설산업은</h3>
-              <p>
-                제품에 대한 최고의 품질과  <br>
-                서비스로 고객만족에 <br>
-                앞장설 것이며 고객의 고마움에 <br>
-                보답할 것을 약속드립니다. <br>
-                <br>
-                <strong>TEL : </strong> TEL 031-234-6750 <br>
-                <strong>Email:</strong> eesr0726@hanmail.net<br>
-              </p>
+  <div style="background-color: black;">
+    <footer style=" margin-top: 50px; margin-bottom: 50px;" id="footer" class="footer">
+      <div class="footer-content position-relative">
+        <div  class="container">
+          <div  class="row">
+  
+            <div class="col-lg-4 col-md-6">
+              <div class="footer-info">
+                <h3>SH건설산업은</h3>
+                <p>
+                  제품에 대한 최고의 품질과  <br>
+                  서비스로 고객만족에 <br>
+                  앞장설 것이며 고객의 고마움에 <br>
+                  보답할 것을 약속드립니다. <br>
+                  <br>
+                  <strong>TEL : </strong> TEL 031-234-6750 <br>
+                  <strong>Email:</strong> eesr0726@hanmail.net<br>
+                </p>
+              </div>
             </div>
+  
+            <div class="col-lg-2 col-md-3 footer-links">
+              <h4>회사소개</h4>
+              <ul>
+                <li>홈페이지</li>
+                <li>대표인사말</li>
+                <li>회사연혁</li>
+                <li>특허및인증</li>
+                <li>오시는길</li>
+              </ul>
+            </div>
+  
+            <div class="col-lg-2 col-md-3 footer-links">
+              <h4>시공분야</h4>
+              <ul>
+                <li>LVU형측구</li>
+                <li>철도터널동구</li>
+                <li>중앙분리대</li>
+                <li>도로경계석</li>
+                <li>교량난간방호병</li>
+                <li>방음벽</li>
+                <li>다이크</li>
+                <li>기타</li>
+              </ul>
+            </div>
+  
+            <div class="col-lg-2 col-md-3 footer-links">
+              <h4>공지사항</h4>
+              <ul>
+                <li>공지사항</li>
+              </ul>
+            </div>
+  
+            <div class="col-lg-2 col-md-3 footer-links">
+              <h4>문의하기</h4>
+              <ul>
+                <li>문의하기</li>
+              </ul>
+            </div>
+  
           </div>
-
-          <div class="col-lg-2 col-md-3 footer-links">
-            <h4>회사소개</h4>
-            <ul>
-              <li>홈페이지</li>
-              <li>대표인사말</li>
-              <li>회사연혁</li>
-              <li>특허및인증</li>
-              <li>오시는길</li>
-            </ul>
-          </div>
-
-          <div class="col-lg-2 col-md-3 footer-links">
-            <h4>시공분야</h4>
-            <ul>
-              <li>LVU형측구</li>
-              <li>철도터널동구</li>
-              <li>중앙분리대</li>
-              <li>도로경계석</li>
-              <li>교량난간방호병</li>
-              <li>방음벽</li>
-              <li>다이크</li>
-              <li>기타</li>
-            </ul>
-          </div>
-
-          <div class="col-lg-2 col-md-3 footer-links">
-            <h4>공지사항</h4>
-            <ul>
-              <li>공지사항</li>
-            </ul>
-          </div>
-
-          <div class="col-lg-2 col-md-3 footer-links">
-            <h4>문의하기</h4>
-            <ul>
-              <li>문의하기</li>
-            </ul>
-          </div>
-
         </div>
       </div>
-    </div>
-
-    <div style="margin-top: 20px;" class="footer-legal text-center position-relative">
-      <div class="container">
-        <div class="copyright">
-          &copy; Copyright <strong><span>COPYRIGHT ⓒ SINCE 2023 에스에이치 건설산업 주식회사</span></strong> <br>
-          . All Rights Reserved
+  
+      <div style="margin-top: 20px;" class="footer-legal text-center position-relative">
+        <div class="container">
+          <div class="copyright">
+            &copy; Copyright <strong><span>COPYRIGHT ⓒ SINCE 2023 에스에이치 건설산업 주식회사</span></strong> <br>
+            . All Rights Reserved
+          </div>
         </div>
       </div>
-    </div>
-  </footer>
+    </footer>
+  </div>
+   
 
 
 
