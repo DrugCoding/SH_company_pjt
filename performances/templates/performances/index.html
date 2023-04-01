@@ -21,7 +21,7 @@
                 </tr>
             </thead>
             <tbody class = "text-dark">
-                {% for p_article in p_articles %}
+                {% for p_article in paginated_performances %}
                 <tr onclick = "location.href = '{{p_article.id}}'">
                     <th>{{ p_article.id }}</th>
                     <th>{{ p_article.title }}</th>
@@ -29,8 +29,8 @@
                     <th>{{ p_article.start }} ~ {{ p_article.finish }}</th>
                     <th>
                         {% if request.user.is_superuser == 1 %}
-                            <a href="{% url 'performances:update' p_article.pk %}" style='text-decoration:none; color:black' class='fw-bolder'>수정하기</a>
-                            <a href="{% url 'performances:delete' p_article.pk %}" style='text-decoration:none; color:black' class='fw-bolder'>삭제하기</a>
+                        <a href="{% url 'performances:update' p_article.pk %}" style='text-decoration:none; color:black' class='fw-bolder'>수정하기</a>
+                        <a href="{% url 'performances:delete' p_article.pk %}" style='text-decoration:none; color:black' class='fw-bolder'>삭제하기</a>
                         {% endif %}
                     </th>
                 </tr>
@@ -41,5 +41,51 @@
     <div>
     <a href="{% url 'performances:create' %}">글작성</a>
     </div>
+    <!-- 게시글 페이지네이션 -->
+    {% if paginated_performances %}
+    <ul class="pagination justify-content-center py-5">
+    <!-- 첫 페이지 -->
+    {% if paginated_performances.has_previous %}
+    <!-- 이전페이지가 있으면 연결(첫 페이지가 아니면) -->
+    <li class="page-item">
+        <a class="page-link" style="color: #14402B; text-decoration: none;" tabindex="-1" href="?page=1">&#60;</a>
+    </li>
+    {% else %}
+    <li class="page-item disabled">
+        <a class="page-link" href="#">&#60;</a>
+    </li>
+    {% endif %}
+
+    <!-- 페이지리스트 -->
+    <!-- //페이지 범위를 하나씩 리턴 -->
+    {% for page_number in paginated_performances.paginator.page_range %}
+    {% if page_number >= paginated_performances.number|add:-2 and page_number <= paginated_performances.number|add:2 %} <!-- // 현재
+        페이지일 때는 active -->
+        {% if page_number == paginated_performances.number %}
+        <li class="page-item" aria-current="page">
+        <a class="page-link fw-bold" style="background-color: #14402B; color: white; text-decoration: none;"
+            href="?page={{ page_number }}">{{ page_number }}</a>
+        </li>
+        {% else %}
+        <li class="page-item text-color-warning">
+        <a class="page-link fw-bold" style="color: #14402B; text-decoration: none;" href="?page={{ page_number }}">
+            {{ page_number }}</a>
+        </li>
+        {% endif %}
+        {% endif %}
+        {% endfor %}
+
+        <!-- 다음페이지 -->
+        {% if paginated_performances.has_next %}
+        <li class="page-item">
+        <a class="page-link fw-bold" style="color: #14402B; text-decoration: none;" href="?page={{ max_index }}">&#62;</a>
+        </li>
+        {% else %}
+        <li class="page-item disabled">
+        <a class="page-link fw-bold" tabindex="-1" href="#">&#62;</a>
+        </li>
+        {% endif %}
+    </ul>
+    {% endif %}
 </div>
 {% endblock %}

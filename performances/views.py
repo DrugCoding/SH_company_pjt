@@ -1,12 +1,19 @@
 from django.shortcuts import render, redirect
 from .forms import PerformanceForm
 from .models import Performance
+from django.core.paginator import Paginator
 
 # Create your views here.
 def index(request):
-    p_articles = Performance.objects.all()
+    p_articles = Performance.objects.order_by('-pk')
+    page = request.GET.get('page', '1')
+    paginator = Paginator(p_articles, 13) #한 페이지 당 몇개 씩 보여줄 지 지정 
+    paginated_performances = paginator.get_page(page)
+    max_index = len(paginator.page_range)
     context = {
         'p_articles': p_articles,
+        'paginated_performances': paginated_performances,
+        'max_index': max_index,
     }
     return render(request, 'performances/index.html', context)
 
