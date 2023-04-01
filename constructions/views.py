@@ -1,6 +1,12 @@
 from django.shortcuts import render
 
 # Create your views here.
+def index(request):
+    return render(request, 'constructions/index.html')
+
+def create(request):
+    return render(request, 'constructions/create.html')
+
 def part01(request):
     return render(request, 'constructions/part01.html')
     
