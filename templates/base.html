@@ -57,7 +57,7 @@
   <!-- nav 생성 구간입니다. -->
   <nav style="top:0px; background-color: #fff; height: 120px;" class="fixed-top navbar navbar-expand-lg bg-body-light">
     <div class="container-fluid">
-      <a class="navbar-brand" href="#">
+      <a class="navbar-brand" href="{% url 'companies:index' %}">
         <img style="width: 350px; margin-left: 352px;" src="{%static 'images/SH건설산업(주)_LOGO.PNG'%}" alt="">
       </a>
       <button class="navbar-toggler" 
@@ -76,28 +76,28 @@
             <a style="font-size: 18px;" 
                class="nav-link active" 
                aria-current="page" 
-               href="#"
+               href="{% url 'companies:greeting'%}"
             >
               회사소개
             </a>
           </li>
           <li style="margin-right: 20px;" class="nav-item">
-            <a style="font-size: 18px;" class="nav-link active" aria-current="page" href="#">
+            <a style="font-size: 18px;" class="nav-link active" aria-current="page" href="{% url 'constructions:index' %}">
               시공분야
             </a>
           </li>
           <li style="margin-right: 20px;" class="nav-item">
-            <a style="font-size: 18px;" class="nav-link active" aria-current="page" href="#">
+            <a style="font-size: 18px;" class="nav-link active" aria-current="page" href="{% url 'performances:index' %}">
               시공실적
             </a>
           </li>
           <li style="margin-right: 20px;" class="nav-item">
-            <a style="font-size: 18px;" class="nav-link active" aria-current="page" href="#">
+            <a style="font-size: 18px;" class="nav-link active" aria-current="page" href="{% url 'equipments:index' %}">
               장비운영
             </a>
           </li>
           <li style="margin-right: 20px;" class="nav-item">
-            <a style="font-size: 18px;" class="nav-link active" aria-current="page" href="#">
+            <a style="font-size: 18px;" class="nav-link active" aria-current="page" href="{% url 'notices:index' %}">
               커뮤니티
             </a>
           </li>
