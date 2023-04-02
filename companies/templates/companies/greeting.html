@@ -29,18 +29,18 @@
         <div style="margin-top: 100px;">
             <ul style=" list-style: none; margin-left: 80px; text-align: left;">
                 <li style=" margin-bottom: 30px;">
-                  <a style="font-weight: 400; color: #000; text-decoration: none;" href="./회사연혁.html">
+                  <a style="font-weight: 400; color: #000; text-decoration: none;" href="{% url 'companies:greeting' %}">
                     회사소개
                   </a>
                 </li>
                 <li style=" margin-bottom: 30px;">
-                  <a style="color: #000; text-decoration: none;" href="./회사연혁.html">회사연혁</a>
+                  <a style="color: #000; text-decoration: none;" href="{% url 'companies:history' %}">회사연혁</a>
                 </li>
                 <li style="margin-bottom: 30px;">
-                  <a style="color: #000; text-decoration: none;" href="./회사연혁.html">특허및인증</a>
+                  <a style="color: #000; text-decoration: none;" href="{% url 'companies:patent' %}">특허및인증</a>
                 </li>
                 <li style="margin-bottom: 30px;">
-                  <a style="color: #000; text-decoration: none;" href="./회사연혁.html">오시는길</a>
+                  <a style="color: #000; text-decoration: none;" href="{% url 'companies:come' %}">오시는길</a>
                 </li>
             </ul>
         </div>
