@@ -1,0 +1,83 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block css %}
+
+
+{% endblock css %}
+
+{% block content %}
+<!-- banner 생성구간입니다. -->
+<div style="margin-top: 100px;" class="card text-bg-dark">
+    <img style="height: 150px; filter: brightness(50%); background-size: cover; object-fit: cover;" 
+         src="{%static 'images/60.png'%}" class="card-img" alt="회사소개 윗부분 사진입니다.">
+    <div class="card-img-overlay">
+        <div style="margin-top: 50px; margin-left: 90px;">
+            <p style="text-align: center; animation: fadeIn; animation-duration: 2s; font-size: 27px;" 
+               class="animate__animated animate__fadeIn card-title">
+               SH건설산업 기계타설전문 홈페이지를방문해주신 여러분 진심으로 환영합니다.
+            </p>
+        </div>
+  </div>
+  
+  <div style="background-color: #fff;" class="content">
+    <div class="container text-center">
+      <div class="row">
+        <div class="col-sm-4">
+          <div style="margin-top: 100px;">
+              <ul style=" list-style: none; margin-left: 80px; text-align: left;">
+                  <li style=" margin-bottom: 30px;">
+                    <a style="font-weight: 400; color: #000; text-decoration: none;" href="./회사연혁.html">
+                      회사소개
+                    </a>
+                  </li>
+                  <li style=" margin-bottom: 30px;">
+                    <a style="color: #000; text-decoration: none;" href="./회사연혁.html">회사연혁</a>
+                  </li>
+                  <li style="margin-bottom: 30px;">
+                    <a style="color: #000; text-decoration: none;" href="./회사연혁.html">특허및인증</a>
+                  </li>
+                  <li style="margin-bottom: 30px;">
+                    <a style="color: #000; text-decoration: none;" href="./회사연혁.html">오시는길</a>
+                  </li>
+              </ul>
+          </div>
+        </div>
+
+        <!-- 특허 인증  -->
+        <div style="margin-top: 100px; margin-bottom: 500px; height: 500px;" class="col-sm-8">
+            <div class="container text-center">
+                <div class="row">
+                  <div class="col">
+                    <div style="box-sizing: border-box; width: 310px; height: 374px; border: 1px solid #000000;">
+                        <img style="width: 300px;" src="{%static 'images/특허등록증.PNG'%}" alt="특허 등록증 사진입니다.">
+                        <div style="position: absolute; width: 310px; height: 90px; margin-top: 97.8px; background-color: #7D7474;">
+                            <p style="text-align: left; color: #fff; margin-top: 20px; margin-left: 10px;">이성로 - 경계석 <br> 기계타설-특허등록증</p>
+                        </div>
+                    </div>
+                  </div>
+                  <div class="col">
+                    <div style="box-sizing: border-box; width: 310px; height: 374px; border: 1px solid #000000;">
+                        <img style="width: 300px;" src="{%static 'images/특허등록증.PNG'%}" alt="특허 등록증 사진입니다.">
+                        <div style="position: absolute; width: 310px; height: 90px; margin-top: 97.8px; background-color: #7D7474;">
+                            <p style="text-align: left; color: #fff; margin-top: 20px; margin-left: 10px;">이성로 - 경계석 <br> 기계타설-특허등록증</p>
+                        </div>
+                    </div>
+                  </div>
+                  <div style="margin-top: 50px;" class="col">
+                    <div style="box-sizing: border-box; width: 310px; height: 374px; border: 1px solid #000000;">
+                        <img style="width: 300px;" src="{%static 'images/특허등록증.PNG'%}" alt="특허 등록증 사진입니다.">
+                        <div style="position: absolute; width: 310px; height: 90px; margin-top: 97.8px; background-color: #7D7474;">
+                            <p style="text-align: left; color: #fff; margin-top: 20px; margin-left: 10px;">이성로 - 경계석 <br> 기계타설-특허등록증</p>
+                        </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+          </div>
+        </div>
+      </div>
+  
+
+
+{% endblock %}
