@@ -109,8 +109,8 @@ def update(request, notice_pk):
 
 @login_required
 def delete(request, notice_pk):
+    notice = Notice.objects.get(pk=notice_pk)
     if request.user.is_authenticated and request.user == notice.user:
-        notice = Notice.objects.get(pk=notice_pk)
         notice.delete()
         return redirect("notices:index")
     

@@ -2,11 +2,18 @@
 {% load static %}
 
 {% block content %}
-<div class="container">
-    <div style="text-align:center">
-        <h2>장비운영</h2>
+<div class="container" style="padding:10rem">
+    <div style="color:white; text-align:center" >
+        <h2 class="fw-bold">장비운영</h2>
     </div>
-    
+    <form action="{% url 'equipments:search' %}" method="">
+        {% csrf_token %}
+        <div class="d-flex justify-content-end mb-3">
+            <input class="form-control search-input mx-2" name="keyword" type="search" placeholder="검색어를 입력해주세요."
+                aria-label="Search" style="width: 21rem; height: 3rem; font-weight: 400; ">
+            <button type="search" class="btn fw-bold" style="background-color:#14402B; color:white">검색</button>
+        </div>
+    </form>
 </div>
 <section class="equipment-card d-flex justify-content-start flex-wrap">
     {% for equipment in equipments%}
@@ -46,12 +53,12 @@
     페이지일 때는 active -->
     {% if page_number == paginated_equipments.number %}
     <li class="page-item" aria-current="page">
-      <a class="page-link" style="background-color: #14402B; color: white; text-decoration: none;"
+      <a class="page-link" style="background-color: white; color: #14402B; text-decoration: none;"
         href="?page={{ page_number }}">{{ page_number }}</a>
     </li>
     {% else %}
     <li class="page-item text-color-warning">
-      <a class="page-link" style="color:#14402B; text-decoration: none;" href="?page={{ page_number }}">
+      <a class="page-link" style="color:white; text-decoration: none;" href="?page={{ page_number }}">
         {{ page_number }}</a>
     </li>
     {% endif %}
@@ -61,7 +68,7 @@
     <!-- 다음페이지 -->
     {% if paginated_equipments.has_next %}
     <li class="page-item">
-      <a class="page-link" style="color:#14402B; text-decoration: none;" href="?page={{ max_index }}">&#62;</a>
+      <a class="page-link" style="color:white; text-decoration: none;" href="?page={{ max_index }}">&#62;</a>
     </li>
     {% else %}
     <li class="page-item disabled">
@@ -70,4 +77,11 @@
     {% endif %}
 </ul>
 {% endif %}
+<div class="container">
+  {% if request.user.is_superuser == 1 %}
+  <a href="{% url 'equipments:create' %}">
+    <button type="subit" class="btn fw-bold" style='color:white'>장비 등록</button>
+  </a>
+  {% endif %}
+</div>
 {% endblock %}

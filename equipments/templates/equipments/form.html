@@ -2,14 +2,11 @@
 {% load django_bootstrap5 %}
 {% load static %}
 
-
-{% block content %}
-
+{% block content %} 
 <div class="container" style='padding:10rem'>
     <form action="" method="POST" enctype="multipart/form-data">
         {% csrf_token %}
-        {% bootstrap_form equipment_form %} 
-        
+        {% bootstrap_form equipment_form %}
         <div class="d-flex justify-content-end">
           <input class="btn" type="submit" value="작성완료" style="background-color:#14402B; color:white; font-weight:bold">
         </div>
