@@ -19,7 +19,7 @@
                 </tr>
             </tbody>
     </table>
-    <p>{{ notice.content }}</p>
+    <p style='color:white'>{{ notice.content }}</p>
     {% for photo in notice.photo_set.all%}
         <img src="{{photo.image.url}}" width="300"><br>
     {% endfor %}
@@ -30,7 +30,7 @@
                 <a href="{% url 'notices:update' notice.pk %}" style='text-decoration:none; color:white' class='fw-bolder'>수정하기</a>
             </button>
             <button type="button" class="btn">
-                <a href="{% url 'notices:delete' notice.pk %}" style='text-decoration:none; color:#14402B' class='fw-bolder'>삭제하기</a>
+                <a href="{% url 'notices:delete' notice.pk %}" style='text-decoration:none; color:white' class='fw-bolder'>삭제하기</a>
             </button>
             </p>
         </div>

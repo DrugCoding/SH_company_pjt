@@ -7,9 +7,9 @@
         {% csrf_token %}
         <h2>
             <input class="input-title form-control mb-3" style="border:0px; font-size: 1.5rem;" name="title"
-            placeholder="제목을 입력해주세요." value="{{ notice.title }}"  maxlength="50" required>
+            placeholder="제목을 입력해주세요" value="{{ notice.title }}"  maxlength="50" required>
         </h2>
-        <textarea class="form-control" name="content" required>{{ notice.content }}</textarea>
+        <textarea class="form-control" placeholder="내용을 입력해주세요." name="content" required>{{ notice.content }}</textarea>
         <div class='mt-3'>
             <input type="file" name="imgs" multiple>
         </div>

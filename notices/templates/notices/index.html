@@ -1,9 +1,13 @@
 {% extends "base.html" %}
 {% load static %}
+{% load notice_filter %}
 
 
 {% block content %}
 <div class="container" style="padding:10rem">
+    <div style="color:white; text-align:center" >
+        <h2 class="fw-bold">공지사항</h2>
+    </div>
     <form action="{% url 'notices:search' %}" method="">
         {% csrf_token %}
         <div class="d-flex justify-content-end mb-3">
@@ -26,7 +30,7 @@
             <tbody class = "text-dark">
                 {% for notice in paginated_notices %}
                 <tr onclick = "location.href = '{{notice.id}}'">
-                    <th>{{ notice.id }}</th>
+                    <th>{{ paginated_notices.paginator.count|sub:paginated_notices.start_index|sub:forloop.counter0|add:1 }}</th>
                     <th>{{ notice.title }}</th>
                     <th>{{ notice.user }}</th>
                     <th>{{ notice.created_at | date:'Y.m.d H:i'}}</th>
@@ -84,6 +88,13 @@
     {% endif %}
 </div>
 
+<div class="container">
+{% if request.user.is_superuser == 1 %}
+    <a href="{% url 'notices:create' %}">
+        <button type="subit" class="btn fw-bold" style='color:white'>공지글 작성</button>
+    </a>
+{% endif %}
+</div>
 
 {% endblock %}
 
