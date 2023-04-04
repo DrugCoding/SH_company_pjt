@@ -1,19 +1,28 @@
 {% extends "base.html" %}
 
 {% block content %}
-    <div style='padding:10rem'>
+<div class='container' style='padding:10rem'>
     {% if not equipments %}
-        <div class="d-flex justify-content-center">
-            <h4>검색 결과가 없습니다</h4>
-        </div>
-    {% else %}
-        {% for equipment in equipments %}
-            {% if equipment.image %}
-            <a href="{% url 'equipments:detail' equipment.pk %}"><img src="{{ equipment.image.url }}" x`alt="{{ equipment.image }}"></a>
-            {% endif %}
-            {{ equipment.title }}
-            {{ equipment.content }}
-        {% endfor %}
-    {% endif %}
+    <div class="d-flex justify-content-center">
+        <h4>검색 결과가 없습니다</h4>
     </div>
+    {% else %}
+    <div class='row'>
+        {% for equipment in equipments %}
+        <div class='col'>
+            <a href="{% url 'equipments:detail' equipment.pk %}" style='text-decoration:none' class='mx-2'>
+                <div class="card" style="width: 18rem;">
+                    {% if equipment.image %}
+                    <img src="{{ equipment.image.url }}" class="card-img-top" alt="{{ equipment.image }}">
+                    {% endif %}
+                    <div class="card-body">
+                        <h5 class="card-title text-center fw-bold">{{ equipment.title }}</h5>
+                    </div>
+                </div>
+            </a>
+        </div>
+        {% endfor %}
+    </div>
+    {% endif %}
+</div>
 {% endblock %}

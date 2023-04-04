@@ -3,34 +3,35 @@
 
 {% block content %}
 <div class="container" style="padding:10rem">
-    <div style="color:white; text-align:center" >
-        <h2 class="fw-bold">장비운영</h2>
+  <div style="text-align:center" >
+      <h2 class="fw-bold">장비운영</h2>
+  </div>
+  <form class='mt-5' action="{% url 'equipments:search' %}" method="">
+      {% csrf_token %}
+      <div class="d-flex justify-content-end mb-3">
+          <input class="form-control search-input mx-2" name="keyword" type="search" placeholder="검색어를 입력해주세요."
+              aria-label="Search" style="width: 21rem; height: 3rem; font-weight: 400; ">
+          <button type="search" class="btn fw-bold" style="background-color:#14402B; color:white">검색</button>
+      </div>
+  </form>
+  <div class='row'>
+    {% for equipment in paginated_equipments%}
+    <div class='mt-3 col-sm py-3'>
+      <a href="{% url 'equipments:detail' equipment.pk %}" style='text-decoration:none'>
+        <div class="card" style="width: 18rem;">
+          {% if equipment.image %}
+          <img src="{{ equipment.image.url }}" class="card-img-top" alt="{{ equipment.image }}">
+          {% endif %}
+          <div class="card-body">
+            <h5 class="card-title text-center fw-bold">{{ equipment.title }}</h5>
+            {% comment %} <p class="card-text">{{ equipment.content }}</p> {% endcomment %}
+          </div>
+        </div>
+      </a>
     </div>
-    <form action="{% url 'equipments:search' %}" method="">
-        {% csrf_token %}
-        <div class="d-flex justify-content-end mb-3">
-            <input class="form-control search-input mx-2" name="keyword" type="search" placeholder="검색어를 입력해주세요."
-                aria-label="Search" style="width: 21rem; height: 3rem; font-weight: 400; ">
-            <button type="search" class="btn fw-bold" style="background-color:#14402B; color:white">검색</button>
-        </div>
-    </form>
+    {% endfor %}
+  </div>
 </div>
-<section class="equipment-card d-flex justify-content-start flex-wrap">
-    {% for equipment in equipments%}
-        {{equipment.title}}
-    {% endfor %}
-    {% for equipment in paginated_equipments %}
-        <div class="card-head">
-            {% if equipment.image %}
-            <a href="{% url 'equipments:detail' equipment.pk %}"><img src="{{ equipment.image.url }}"
-            style="border-radius: 15px 15px 0 0; width: 100%; height: 240px; object-fit: cover;" alt="{{ equipment.image }}"></a>
-            {% endif %}
-        </div>
-        <div class="card-body p-3">
-            <a href="{% url 'equipments:detail' equipment.pk %}" class="non_a" style="font-size:1.2rem;" alt="{{ equipment.title }}"></a>
-        </div>
-    {% endfor %}
-</section>
 
 {% if paginated_equipments %}
 <ul class="pagination justify-content-center py-5">
@@ -38,7 +39,7 @@
   {% if paginated_equipments.has_previous %}
   <!-- 이전페이지가 있으면 연결(첫 페이지가 아니면) -->
   <li class="page-item">
-    <a class="page-link" style="text-decoration: none;" tabindex="-1" href="?page=1">&#60;</a>
+    <a class="page-link" style="text-decoration: none; color:black" tabindex="-1" href="?page=1">&#60;</a>
   </li>
   {% else %}
   <li class="page-item disabled">
@@ -58,7 +59,7 @@
     </li>
     {% else %}
     <li class="page-item text-color-warning">
-      <a class="page-link" style="color:white; text-decoration: none;" href="?page={{ page_number }}">
+      <a class="page-link" style="color:black;text-decoration: none;" href="?page={{ page_number }}">
         {{ page_number }}</a>
     </li>
     {% endif %}
