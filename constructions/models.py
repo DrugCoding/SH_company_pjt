@@ -17,7 +17,7 @@ class Constructions(models.Model):
     updated_at = models.DateTimeField(auto_now=True)
     user = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE)
     # 시공종목 리스트
-    c_list = models.ForeignKey('constructions:C_Category', on_delete=models.CASCADE,)
+    # c_list = models.ForeignKey(C_Category, on_delete=models.CASCADE, null=True)
 
 class C_Category(models.Model):
     name = models.CharField(max_length=30)
