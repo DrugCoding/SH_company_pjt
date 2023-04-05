@@ -14,3 +14,7 @@ class Equipment(models.Model):
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
     user = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE)
+
+class EquipImage(models.Model):
+    equipment = models.ForeignKey(Equipment, on_delete=models.CASCADE)
+    equip_img = models.ImageField('사진등록', upload_to='media/images/', blank=True, null=True) # 이미지 생략 가능
