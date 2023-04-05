@@ -11,6 +11,12 @@
     <div class='px-3 py-3'>
         <h2>{{ equipment.title }}</h2>
         <h4>{{ equipment.content }}</h4>
+        {% for image in equipment.equipimage_set.all %}
+            <div class='d-flex'>
+                <img src="{{ image.equip_img.url }}" alt="{{ image.equip_img }}" class='equip-img'
+                style="width:93px; height:93px; flex-shrink:0; border-radius:2px">
+            </div>
+        {% endfor %}
     </div>
     
     

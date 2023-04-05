@@ -1,9 +1,7 @@
 from django.shortcuts import render, redirect
 from django.contrib.auth.decorators import login_required
-from .models import Equipment
-from .forms import EquipmentForm
-from django.core.paginator import Paginator
-from django.db.models import Q
+from .models import Equipment, EquipImage
+from .forms import EquipmentForm, EquipImageForm
 
 # Create your views here.
 def index(request):
@@ -18,15 +16,28 @@ def create(request):
     if request.user.is_superuser:
         if request.method == "POST":
             equipment_form = EquipmentForm(request.POST, request.FILES)
-            if equipment_form.is_valid():
+            equip_image_form = EquipImageForm(request.POST, request.FILES)
+            tmp_img = request.FILES.getlist('equip_img')
+
+            if equipment_form.is_valid() and equip_image_form.is_valid():
                 equipment = equipment_form.save(commit=False)
                 equipment.user = request.user
+
+                if tmp_img:
+                    for img in tmp_img:
+                        img_instance = EquipImage(equipment=equipment, equip_img=img)
+                        equipment.save()
+                        img_instance.save()
+
                 equipment.save()
                 return redirect('equipments:index')
         else:
             equipment_form = EquipmentForm()
+            equip_image_form = EquipImageForm()
+
         context = {
             'equipment_form': equipment_form, 
+            'equip_image_form': EquipImageForm()
         }
         return render(request, 'equipments/form.html', context)
     else:
@@ -42,17 +53,40 @@ def detail(request, equipment_pk):
 @login_required
 def update(request, equipment_pk):
     equipment = Equipment.objects.get(pk=equipment_pk)
+    equip_images = EquipImage.objects.filter(pk=equipment_pk)
+
     if request.user.is_superuser:
         if request.method == 'POST':
             equipment_form = EquipmentForm(request.POST, request.FILES, instance=equipment)
-            if equipment_form.is_valid():
+            # form에 equip_image 폼 추가
+            equip_image_form = EquipImageForm(request.POST, request.FILES)
+            tmp_img = request.FILES.getlist('equip_img')
+                    
+            for img in equip_images:
+                if img:
+                    img.delete()
+
+            # 장비 및 장비 이미지 작성에 대한 폼이 유효하면
+            if equipment_form.is_valid() and equip_image_form.is_valid():
+                
+                if tmp_img:
+                    for img in tmp_img:
+                        img_instance = EquipImage(equipment=equipment, equip_img=img)
+                        equipment.save()
+                        img_instance.save()
+
                 equipment_form.save()
                 return redirect("equipments:detail", equipment_pk)
         else:
             equipment_form = EquipmentForm(instance=equipment)
+            if equip_images:
+                equip_image_form = EquipImageForm(instance=equip_images[0])
+            else:
+                equip_image_form = EquipImageForm()
         context = {
             "equipment_form": equipment_form, 
             "equipment": equipment,
+            "equip_image_form": equip_image_form,
         }
         return render(request, "equipments/form.html", context)
     else:
