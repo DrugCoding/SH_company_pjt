@@ -19,7 +19,7 @@
     {% if request.user.is_superuser == 1 %}
             <div class='mt-2 d-flex justify-content-end'>
                 <p>
-                <button type="button" class="btn" style="background-color:#14402B" >
+                <button type="button" class="btn" style="color: #fff; background: rgba(10, 56, 4, 0.74);" >
                     <a href="{% url 'equipments:update' equipment.pk %}" style='text-decoration:none; color:white' class='fw-bolder'>수정하기</a>
                 </button>
                 <button type="button" class="btn">

@@ -8,15 +8,8 @@ from django.db.models import Q
 # Create your views here.
 def index(request):
     equipments = Equipment.objects.order_by('-pk')
-
-    page = request.GET.get('page', '1')
-    paginator = Paginator(equipments, 6) # 한 페이지에서 보이는 장비를 6개로 제한
-    paginated_equipments = paginator.get_page(page)
-    max_index = len(paginator.page_range)
     context = {
         "equipments": equipments,
-        "paginated_equipments": paginated_equipments,
-        "max_index": max_index,
     }
     return render(request, 'equipments/index.html', context)
 
@@ -73,19 +66,19 @@ def delete(request, equipment_pk):
         equipment.delete()
         return redirect("equipments:index")
 
-# 검색 기능 - 요청 url 에 keyword 정보가 있는지 확인하고, 해당 키워드를 가지고 title 필드를 검색해서 키워드가 포함된 객체만 notices 에 담겨진다.
-def search(request):
-    keyword = request.GET.get("keyword", "")  # 검색어
+# # 검색 기능 - 요청 url 에 keyword 정보가 있는지 확인하고, 해당 키워드를 가지고 title 필드를 검색해서 키워드가 포함된 객체만 notices 에 담겨진다.
+# def search(request):
+#     keyword = request.GET.get("keyword", "")  # 검색어
 
-    if keyword:
-        equipments = Equipment.objects.filter(
-            Q(title__icontains=keyword) | Q(content__icontains=keyword) # Q는 장고 model orm으로 where 절에 or문을 추가하고 싶을 때 사용
-        ).distinct()
+#     if keyword:
+#         equipments = Equipment.objects.filter(
+#             Q(title__icontains=keyword) | Q(content__icontains=keyword) # Q는 장고 model orm으로 where 절에 or문을 추가하고 싶을 때 사용
+#         ).distinct()
         
-        context = {
-            "equipments": equipments,
-            "keyword": keyword,
-        }
-        return render(request, "equipments/search.html", context)
-    else:
-        return redirect("equipments:index")
+#         context = {
+#             "equipments": equipments,
+#             "keyword": keyword,
+#         }
+#         return render(request, "equipments/search.html", context)
+#     else:
+#         return redirect("equipments:index")
