@@ -4,7 +4,7 @@ from imagekit.models import ProcessedImageField
 from imagekit.processors import ResizeToFill
 
 # Create your models here.
-class Constructions(models.Model):
+class Construction(models.Model):
     title = models.CharField(max_length=50)
     content = models.TextField()
     image = ProcessedImageField(
@@ -17,7 +17,7 @@ class Constructions(models.Model):
     updated_at = models.DateTimeField(auto_now=True)
     user = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE)
     # 시공종목 리스트
-    # c_list = models.ForeignKey(C_Category, on_delete=models.CASCADE, null=True)
+    c_list = models.ForeignKey('constructions.C_Category', on_delete=models.CASCADE, null=True)
 
 class C_Category(models.Model):
     name = models.CharField(max_length=30)

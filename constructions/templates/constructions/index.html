@@ -1,5 +1,60 @@
 {% extends "base.html" %}
 {% load static %}
 {% block content %}
-
+<div class="container text-center mt-5">
+  <h3 class="">시공분야</h3>
+  <div class="container"></div>
+  <ul id="puppy-ul" class="font-nanum nav my-4">
+    <li class="hover1 nav-item mt-2">
+      <a href="{% url 'constructions:index' %}" class="nav-link active text-dark">전체</a>
+    </li>
+    <li class="hover1 nav-item mt-2">
+      <a href="{% url 'constructions:c_category' 1 %}" class="nav-link active text-dark">L,V,U형측구</a>
+    </li>
+    <li class="hover1 nav-item mt-2">
+      <a href="{% url 'constructions:c_category' 2 %}" class="nav-link active text-dark">터널공동구</a>
+    </li>
+    <li class="hover1 nav-item mt-2">
+      <a href="{% url 'constructions:c_category' 3 %}" class="nav-link active text-dark">철도터널공동구</a>
+    </li>
+    <li class="hover1 nav-item mt-2">
+      <a href="{% url 'constructions:c_category' 4 %}" class="nav-link active text-dark">중앙분리대</a>
+    </li>
+    <li class="hover1 nav-item mt-2">
+      <a href="{% url 'constructions:c_category' 5 %}" class="nav-link active text-dark">도로경계석</a>
+    </li>
+    <li class="hover1 nav-item mt-2">
+      <a href="{% url 'constructions:c_category' 6 %}" class="nav-link active text-dark">교량난간 방호벽</a>
+    </li>
+    <li class="hover1 nav-item mt-2">
+      <a href="{% url 'constructions:c_category' 7 %}" class="nav-link active text-dark">방음벽</a>
+    </li>
+    <li class="hover1 nav-item mt-2">
+      <a href="{% url 'constructions:c_category' 8 %}" class="nav-link active text-dark">다이크</a>
+    </li>
+    <li class="hover1 nav-item mt-2">
+      <a href="{% url 'constructions:c_category' 8 %}" class="nav-link active text-dark">기타</a>
+    </li>
+  </ul>
+</div>
+<div class='row'>
+  {% for c_article in c_articles%}
+  <div class='mt-3 col-sm py-3'>
+    <a href="{% url 'constructions:detail' c_article.pk %}" style='text-decoration:none'>
+      <div class="card" style="width: 18rem;">
+        {% if c_article.image %}
+        <img src="{{ c_article.image.url }}" class="card-img-top" alt="{{ c_article.image }}">
+        {% endif %}
+        <div class="card-body">
+          <h5 class="card-title text-center fw-bold">{{ c_article.title }}</h5>
+          {% comment %} <p class="card-text">{{ c_article.content }}</p> {% endcomment %}
+        </div>
+      </div>
+    </a>
+  </div>
+  {% endfor %}
+</div>
+<div class="container">
+  <a href="{% url 'constructions:create' %}">아나 글쓰기</a>
+</div>
 {% endblock %}
