@@ -18,6 +18,12 @@ class Construction(models.Model):
     user = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE)
     # 시공종목 리스트
     c_list = models.ForeignKey('constructions.C_Category', on_delete=models.CASCADE, null=True)
+    # 공사진행 여부
+    ing_finish_choice = (
+        ('0', '진행중'),
+        ('1', '완료'),
+    )
+    ing_finish = models.CharField(null=True, max_length=3, choices=ing_finish_choice)
 
 class C_Category(models.Model):
     name = models.CharField(max_length=30)

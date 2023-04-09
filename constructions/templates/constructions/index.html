@@ -5,6 +5,8 @@
 <div class="container text-center mt-5">
   <h3 class="">시공분야</h3>
   <div class="container"></div>
+  <div class="d-flex" style="margin-bottom: 27px;">
+</div>
   <ul id="category-ul" class="font-nanum nav my-4">
     <li class="hover1 nav-item mt-2">
       <a href="{% url 'constructions:index' %}" class="nav-link active text-dark">전체</a>
@@ -38,23 +40,7 @@
     </li>
   </ul>
 </div>
-<div class='row'>
-  {% for c_article in c_articles%}
-  <div class='mt-3 col-sm py-3'>
-    <a href="{% url 'constructions:detail' c_article.pk %}" style='text-decoration:none'>
-      <div class="card" style="width: 18rem;">
-        {% if c_article.image %}
-        <img src="{{ c_article.image.url }}" class="card-img-top" alt="{{ c_article.image }}">
-        {% endif %}
-        <div class="card-body">
-          <h5 class="card-title text-center fw-bold">{{ c_article.title }}</h5>
-          {% comment %} <p class="card-text">{{ c_article.content }}</p> {% endcomment %}
-        </div>
-      </div>
-    </a>
-  </div>
-  {% endfor %}
-</div>
+
 <div class="container">
   <a href="{% url 'constructions:create' %}">아나 글쓰기</a>
 </div>
@@ -71,7 +57,6 @@
             </p>
         </div>
   </div>
-
 
 <!-- 왼쪽메뉴 -->
 <div style="background-color: #fff;" class="content">

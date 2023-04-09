@@ -9,10 +9,12 @@ class ConstructionForm(forms.ModelForm):
             'content',
             'image',
             'c_list',
+            'ing_finish',
         )
         labels = {
             'title': '공사명',
             'content': '내용',
             'image': '사진',
             'c_list': '시공종목',
+            'ing_finish': '공사진행현황',
         }
