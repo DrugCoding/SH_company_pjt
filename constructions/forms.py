@@ -1,9 +1,9 @@
 from django import forms
-from .models import Constructions
+from .models import Construction
 
 class ConstructionForm(forms.ModelForm):
     class Meta:
-        model = Constructions
+        model = Construction
         fields = (
             'title',
             'content',
