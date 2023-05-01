@@ -41,9 +41,11 @@
   </ul>
 </div>
 
-<div class="container">
-  <a href="{% url 'constructions:create' %}">아나 글쓰기</a>
-</div> -->
+{% if request.user.is_superuser == 1 %}
+  <div class="container">
+    <a href="{% url 'constructions:create' %}">글작성</a>
+  </div>
+{% endif %}
 
 <!-- banner 생성구간입니다. -->
 <div style="margin-top: 100px;" class="card text-bg-dark">

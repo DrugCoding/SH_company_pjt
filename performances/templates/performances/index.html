@@ -39,7 +39,9 @@
         </table>
     </div>
     <div>
-    <a href="{% url 'performances:create' %}">글작성</a>
+    {% if request.user.is_superuser == 1 %}
+        <a href="{% url 'performances:create' %}">글작성</a>
+    {% endif %}
     </div>
     <!-- 게시글 페이지네이션 -->
     {% if paginated_performances %}
