@@ -2,24 +2,23 @@
 {% load static %}
 
 {% block content %}
-<div class='d-flex container' style='padding:15rem'>
-    {% if equipment.image %}
+<div class='container' style='padding:15rem'>
+    
     <div style='text-align:center'>
-        <img src='{{ equipment.image.url }}' alt='{{ equipment.image }}' style='border-radius:4px; width:25rem; height:18rem'>
-    </div>
-    {% endif %} 
-    <div class='px-3 py-3'>
-        <h2>{{ equipment.title }}</h2>
-        <h4>{{ equipment.content }}</h4>
-        {% for image in equipment.equipimage_set.all %}
-            <div class='d-flex'>
+        <h1 class='fw-bold'>{{ equipment.title }}</h1>
+        {% if equipment.image %}
+            <img src='{{ equipment.image.url }}' alt='{{ equipment.image }}' style='border-radius:1rem; width:25rem; height:18rem'>
+        {% endif %} 
+        <h4 class='mt-3'>{{ equipment.content }}</h4>
+        <div class='mt-5'>
+            {% for image in equipment.equipimage_set.all %}
                 <img src="{{ image.equip_img.url }}" alt="{{ image.equip_img }}" class='equip-img'
-                style="width:93px; height:93px; flex-shrink:0; border-radius:2px">
-            </div>
-        {% endfor %}
+                    style="width:9rem; height:9rem; flex-shrink:0; border-radius:0.5rem">      
+            {% endfor %} 
+        </div>
     </div>
     
-    
+  
 </div>
 <div class='container'>
     {% if request.user.is_superuser == 1 %}
