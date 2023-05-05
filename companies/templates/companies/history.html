@@ -28,20 +28,20 @@
       <div class="col-sm-4">
         <div style="margin-top: 100px;">
             <ul style=" list-style: none; margin-left: 50px; text-align: left;">
-                <li style=" margin-bottom: 30px;">
-                  <a style="font-weight: 400; color: #000; text-decoration: none;" href="{% url 'companies:greeting' %}">
-                    회사소개
-                  </a>
-                </li>
-                <li style=" margin-bottom: 30px;">
-                  <a style="color: #000; text-decoration: none;" href="#">회사연혁</a>
-                </li>
-                <li style="margin-bottom: 30px;">
-                  <a style="color: #000; text-decoration: none;" href="#">특허및인증</a>
-                </li>
-                <li style="margin-bottom: 30px;">
-                  <a style="color: #000; text-decoration: none;" href="#">오시는길</a>
-                </li>
+              <li style=" margin-bottom: 30px;">
+                <a style="position:relative; z-index: 3; font-weight: 700; color: #000; text-decoration: none;" href="{% url 'companies:greeting' %}">
+                  회사소개
+                </a>
+              </li>
+              <li style=" margin-bottom: 30px;">
+                <a style="position:relative; z-index: 3; font-weight: 700; color: #000; text-decoration: none;" href="{% url 'companies:history' %}">회사연혁</a>
+              </li>
+              <li style="font-weight: 700; margin-bottom: 30px;">
+                <a style="position:relative; z-index: 3; color: #000; text-decoration: none;" href="{% url 'companies:patent' %}">특허및인증</a>
+              </li>
+              <li style="font-weight: 700; margin-bottom: 30px;">
+                <a style="position:relative; z-index: 3; color: #000; text-decoration: none;" href="{% url 'companies:come' %}">오시는길</a>
+              </li>
             </ul>
         </div>
       </div>
